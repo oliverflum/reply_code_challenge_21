@@ -1,7 +1,7 @@
 import json
 
 
-def pars(file_name):
+def parse(file_name):
   in_file = open("inputs/"+file_name + ".in", 'r')
   lines = in_file.readlines()
 
@@ -23,6 +23,8 @@ def pars(file_name):
   antennas_end_index = len(lines)
 
   entities = {
+    "grid_width": dimensions[0],
+    "gid_height": dimensions[1],
     "buildings": [],
     "antennas": [],
     "reward": reward
@@ -41,6 +43,8 @@ def pars(file_name):
   for i in range(antennas_start_index, antennas_end_index):
     antenna_props = lines[i].strip().split(" ")
     entities["antennas"].append({
+      "x": None,
+      "y": None,
       "index": i-antennas_start_index,
       "range": antenna_props[0],
       "speed": antenna_props[1]
@@ -53,4 +57,4 @@ def pars(file_name):
     json.dump(entities, fp)
 
 for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
-  pars(file)
+  parse(file)
