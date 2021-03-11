@@ -1,11 +1,7 @@
 
 from scipy.spatial import distance
+import json
 
-# building:
-# x,y,latency,speed
-
-# antennas:
-# x,y,range,speed
 def calcScore(buildings, antennas, all_connected_bonus):
     score = 0
     allConnected = True
@@ -32,66 +28,13 @@ def calcScore(buildings, antennas, all_connected_bonus):
         score += all_connected_bonus  
     return score
 
-
-antennas = [
-  {
-      "x": 12,
-      "y": 3,
-      "range": 2,
-      "speed": 100
-  },
-  {
-      "x": 2,
-      "y": 4,
-      "range": 4,
-      "speed": 10
-  },
-  {
-      "x": 0,
-      "y": 7,
-      "range": 1,
-      "speed": 50
-  },
-  {
-      "x": 11,
-      "y": 8,
-      "range": 2,
-      "speed": 40
-  },
-]
-
-buildings = [
-    {
-        "x": 0,
-        "y": 7,
-        "latency": 3,
-        "speed": 20
-    },
-    {
-        "x": 12,
-        "y": 2,
-        "latency": 2,
-        "speed": 14
-    },
-    {
-        "x": 2,
-        "y": 4,
-        "latency": 1,
-        "speed": 32
-    },
-    {
-        "x": 10,
-        "y": 7,
-        "latency": 4,
-        "speed": 44
-    },
-    {
-        "x": 11,
-        "y": 8,
-        "latency": 3,
-        "speed": 23
-    }
-]
 # calculate distance
 def calcDist(a,b):
     return distance.cityblock([a["x"], a["y"]], [b["x"], b["y"]])
+
+for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
+  with open('placed/'+file+'.json') as json_file:
+    entities = json.load(json_file)
+  new_score = calcScore(entities["buildings"], entities["antennas"], entities["reward"])
+  if new_score > entities['score']:
+      print("publish me")

@@ -35,10 +35,10 @@ def parse(file_name):
     building_props = lines[i].strip().split(" ")
     entities["buildings"].append({
       "index": i-buildings_start_index,
-      "x": building_props[0],
-      "y": building_props[1],
-      "latency": building_props[2],
-      "speed": building_props[3]
+      "x": int(building_props[0]),
+      "y": int(building_props[1]),
+      "latency": int(building_props[2]),
+      "speed": int(building_props[3])
     })
 
   for i in range(antennas_start_index, antennas_end_index):
@@ -47,8 +47,8 @@ def parse(file_name):
       "x": None,
       "y": None,
       "index": i-antennas_start_index,
-      "range": antenna_props[0],
-      "speed": antenna_props[1]
+      "range": int(antenna_props[0]),
+      "speed": int(antenna_props[1])
     })
 
   if len(entities["buildings"]) != no_buildings or len(entities["antennas"]) != no_antennas:
