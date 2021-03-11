@@ -1,7 +1,9 @@
 import json
 import random
 
-for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
+#for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
+for file in ["data_scenarios_b_mumbai"]:
+#for file in ["data_scenarios_a_example"]:
   with open('parsed/'+file+'.json') as json_file:
     entities = json.load(json_file)
   no_buildings = len(entities["buildings"])
@@ -19,6 +21,6 @@ for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenar
           entities["antennas"][i]["x"] = x
           entities["antennas"][i]["y"] = y
           break
-  
+  print("PLACED")
   with open("placed/"+file + ".json", 'w') as fp:
     json.dump(entities, fp)
