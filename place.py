@@ -10,8 +10,8 @@ for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenar
   used_fields = set()
   for i in range(len(entities["antennas"])):
     if i < no_buildings:
-      entities["antennas"][i]["x"] = entities["buildings"][i]["x"]
-      entities["antennas"][i]["y"] = entities["buildings"][i]["y"]
+      entities["antennas"][i]["x"] = entities["buildings"][i]["x"] + random.randint(0, entities["antennas"][i]["range"])
+      entities["antennas"][i]["y"] = entities["buildings"][i]["y"] + random.randint(0, entities["antennas"][i]["range"])
     else:
       while True:
         x = random.randint(0, entities["grid_width"]-1)
