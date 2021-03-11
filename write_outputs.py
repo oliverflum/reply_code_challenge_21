@@ -1,10 +1,9 @@
 import json
 import os
 
-#for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
+for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
 #for file in ["data_scenarios_a_example"]:
-for file in ["data_scenarios_b_mumbai"]:
-  os.remove('placed/'+file+'.json')
+#for file in ["data_scenarios_b_mumbai"]:
   with open('placed/'+file+'.json') as json_file:
     entities = json.load(json_file)
   no_placed_antennas = len(entities["antennas"])
