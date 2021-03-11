@@ -23,6 +23,7 @@ def parse(file_name):
   antennas_end_index = len(lines)
 
   entities = {
+    "score": 0,
     "grid_width": dimensions[0],
     "grid_height": dimensions[1],
     "buildings": [],
