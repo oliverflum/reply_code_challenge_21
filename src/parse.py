@@ -2,7 +2,7 @@ import json
 
 
 def parse(file_name):
-  in_file = open("inputs/"+file_name + ".in", 'r')
+  in_file = open("../inputs/"+file_name + ".in", 'r')
   lines = in_file.readlines()
 
   dimensions = [int(lines[0].split(' ')[0]),int(lines[0].split(' ')[1])]
