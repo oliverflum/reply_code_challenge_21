@@ -24,7 +24,7 @@ def parse(file_name):
 
   entities = {
     "grid_width": dimensions[0],
-    "gid_height": dimensions[1],
+    "grid_height": dimensions[1],
     "buildings": [],
     "antennas": [],
     "reward": reward
@@ -53,7 +53,7 @@ def parse(file_name):
   if len(entities["buildings"]) != no_buildings or len(entities["antennas"]) != no_antennas:
     100/0
 
-  with open("outputs/"+file_name + ".json", 'w') as fp:
+  with open("parsed/"+file_name + ".json", 'w') as fp:
     json.dump(entities, fp)
 
 for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenarios_c_metropolis", "data_scenarios_d_polynesia", "data_scenarios_e_sanfrancisco", "data_scenarios_f_tokyo"]:
