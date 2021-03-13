@@ -8,9 +8,10 @@ for file in ["data_scenarios_a_example", "data_scenarios_b_mumbai", "data_scenar
     entities = json.load(json_file)
   no_buildings = len(entities["buildings"])
   used_fields = set()
+  buildings_copy = list(entities["buildings"])
   for i in range(len(entities["antennas"])):
     if i < no_buildings:
-      building = entities["buildings"].pop(random.randint(0, len(entities["buildings"])-1))
+      building = buildings_copy.pop(random.randint(0, len(buildings_copy)-1))
       entities["antennas"][i]["x"] = building["x"]
       entities["antennas"][i]["y"] = building["y"]
     else:
